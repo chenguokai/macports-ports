@@ -9,7 +9,7 @@ checksums           rmd160  ee42ce6f1071c0efa9ea848ba4cadb3b2c4dff7f \
 
 categories          archivers
 platforms           darwin
-maintainers         {mails.ucas.ac.cn:chenguokai17 @chenguokai} openmaintainer
+maintainers         {mails.ucas.ac.cn:chenguokai17 @zhouyuanshi} openmaintainer
 license             GPL-3
 description         copies files into or out of a cpio or tar archives
 long_description    GNU cpio copies files into or out of a cpio or tar \
