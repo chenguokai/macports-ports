@@ -7,7 +7,7 @@ PortGroup               cmake 1.1
 
 github.setup            plibither8 2048.cpp 81c0eebaa2e575c7c7943c01958b88896c9da852
 version                 2019-12-12
-revision                0
+revision                1
 categories              games
 maintainers             {mails.ucas.ac.cn:chenguokai17 @chenguokai} openmaintainer
 
@@ -22,6 +22,22 @@ patchfiles              data_path.diff
 checksums               rmd160  3f1b6aae943e70ac79d107dd899762313ff2ce66 \
                         sha256  e5746f6505220d62f1c250456731c632d6d2e820f6a66313bc2940dbd2e1dcbd \
                         size    4205777
+
+post-destroot {
+    move ${destroot}${prefix}/var/2048.cpp/data/scores.txt \
+         ${destroot}${prefix}/var/2048.cpp/data/scores.txt.ori
+    move ${destroot}${prefix}/var/2048.cpp/data/statistics.txt \
+         ${destroot}${prefix}/var/2048.cpp/data/statistics.txt.ori
+}
+
+post-activate {
+    if {![file exists ${prefix}/var/2048.cpp/data/scores.txt]} {
+        file move ${prefix}/var/2048.cpp/data/scores.txt.ori ${prefix}/var/2048.cpp/data/scores.txt
+    }
+    if {![file exists ${prefix}/var/2048.cpp/data/statistics.txt]} {
+        file move ${prefix}/var/2048.cpp/data/statistics.txt.ori ${prefix}/var/2048.cpp/data/statistics.txt
+    }
+}
 
 notes "
 If you run 2048 binary from a directory other than ${prefix}/bin, 
